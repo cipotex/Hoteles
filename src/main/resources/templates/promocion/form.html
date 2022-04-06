@@ -1,0 +1,109 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+
+			<h1 th:text="${titulo}"
+				class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+			<div th:object="${promocion}" th:remove="tag">
+				<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+					<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+				</ul>
+			</div>
+
+			<div class="card-body">
+				<form th:action="@{/promocion/form}" th:object="${promocion}"
+					method="post">
+
+
+					<div class="form-group row" hidden="true">
+						<label class="col-sm-2 col-form-label">Id</label>
+						<div th:if="${#fields.hasErrors('*')}">errors</div>
+						<div class="col-sm-10">
+							<input type="hidden" th:field="*{id}" class="form-control"
+								placeholder="Id" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">EMPRESA</label>
+						<div class="col-sm-10">
+							 	<select th:field="*{empresa}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+							
+								<option th:each="Item : ${empresa}" th:value="${Item.id}"
+									th:text="${Item.nombre}" th:selected="false" />
+									
+							</select> 
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DESCRIPCION</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{descripcion}" class="form-control"
+								placeholder="Descripción del Descuento"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Fecha Inicio</label>
+						<div class="col-sm-10">
+							<input type="date" th:field="*{fechainicio}" class="form-control"
+								placeholder="Fecha Inicio del Descuento"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechainicio')}"
+								th:errors="*{fechainicio}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Fecha Fin</label>
+						<div class="col-sm-10">
+
+							<input type="date" th:field="*{fechafin}" class="form-control"
+								placeholder="Fecha Fin del Descuento"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechafin')}" th:errors="*{fechafin}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PORC DESCUENTO</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{porcdescuento}" step="any"
+								class="form-control" placeholder="Porcentaje Descuento"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('porcdescuento')}"
+								th:errors="*{porcdescuento}"></small>
+						</div>
+					</div>
+
+					<div>
+						<input type="submit" value="Crear Promociones"
+							class="btn btn-primary" />
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

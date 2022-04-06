@@ -1,0 +1,123 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+
+			<h1 th:text="${titulo}"
+				class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+			<div th:object="${empresa}" th:remove="tag">
+				<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+					<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+				</ul>
+			</div>
+
+			<div class="card-body">
+				<form th:action="@{/empresa/form}" th:object="${empresa}"
+					method="post">
+
+
+					<div class="form-group row" hidden="true">
+						<label class="col-sm-2 col-form-label">Id</label>
+						<div th:if="${#fields.hasErrors('*')}">errors</div>
+						<div class="col-sm-10">
+							<input type="hidden" th:field="*{id}" class="form-control"
+								placeholder="Id" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></small>
+						</div>
+					</div>
+
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nombre Empresa</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{nombre}" class="form-control"
+								placeholder="Nombre de la Empresa"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Direccion</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{direccion}" class="form-control"
+								placeholder="Direcci�n de la Empresa"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{direccion}"></small>
+						</div>
+					</div>
+
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nit</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{nit}" class="form-control"
+								placeholder="Numero de Nit"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nit')}" th:errors="*{nit}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nrc</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{nrc}" class="form-control"
+								placeholder="Numero de Registro"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nrc')}" th:errors="*{nrc}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Representante</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{nomb_representante}"
+								class="form-control" placeholder="Representante Legal"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nomb_representante')}"
+								th:errors="*{nomb_representante}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Moneda</label>
+						<div class="col-sm-10">
+								<select th:field="*{moneda}" class="form-control" th:errorclass="'form-control alert-danger'"  >
+								
+								<option th:each="Item : ${moneda}" 
+									    th:value="${Item.id}"
+										th:text="${Item.descripcion}" 
+										th:selected="false" />		
+																	 
+								</select>																						
+								<smallclass="form-text text-danger"
+								th:if="${#fields.hasErrors('moneda')}"
+								th:errors="*{moneda}"></small>
+						</div>
+					</div>
+
+
+					<div>
+						<input type="submit" value="Crear Empresa" class="btn btn-primary" />
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+<body>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<ul class="list-group">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ID</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.id}"></label>
+					</div>
+
+					<div class="form-group row ">
+						<label class="col-sm-2 col-form-label">NOMBRE EMPRESA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.empresa.nombre}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">CLIENTE</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.cliente.nombredui}"></label>
+					</div>
+				 	
+				 	<div class="form-group row">
+						<label class="col-sm-2 col-form-label">HABITACION</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.habitacion.codigo}"></label>
+					</div>
+					
+				 	<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PERIODO RESERVA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.periodoreserva}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">FEHCA INICIAL</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.fechaInicio}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">FECHA FINAL</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.fechaFin}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DIAS OCUPACION</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.diasOcupacion}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PROMOCION </label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.promocionvigente}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">TOTAL RESERVA CON DESCUENTO </label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.montoReservaConDescuento}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">RECURRENTE</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.recurrente}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">GANRANTIA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.montoDeposito}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">RESERVA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" th:text="${datos.reserva.montoPreReserva}"></label>
+					</div>
+					
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

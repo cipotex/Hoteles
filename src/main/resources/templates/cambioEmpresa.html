@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container py-4">
+
+		<div class="card border-primary text-center">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/form}" th:object="${gempresa}" method="post">
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">EMPRESA</label>
+						<div class="col-sm-10">
+						 	<select th:field="*{id}" >							   
+								<option th:each="Item : ${datos}" 
+									    th:value="${Item.id}"
+										th:text="${Item.nombre}" 
+										th:selected="false" />							
+							</select> 
+						</div>
+
+
+					</div>
+					
+					<div class="form-group col-sm-12">
+						<input type="submit" class="btn btn-primary btn-lg btn-block" />
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>

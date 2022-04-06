@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+<body>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+			 <h4 class="card-title">
+					<a class="btn btn-primary btn-xs" th:href="@{/gastos/aprovar/} + ${datos.id}" th:text="'APROVAR'" 
+					onclick="  return confirm('Estas seguro que quieres Autorizar?');" />			
+				</h4>
+				
+				<ul class="list-group">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ID</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.id}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">FECHA FACTURA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.fechafactura}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PROVEEDOR</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.nombreproveedor}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">USUARIO INSERTO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.usuarioRegistro}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ESTADO GASTO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.estadogastos}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">TIPO FACTURA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.tipofactura}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">TIPO GASTO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.tipogasto}"></label>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DESCRIPCION</label> 
+						
+						<textarea class="col-sm-6 col-form-label text-white bg-dark" id="description" rows="5"
+						th:field="${datos.descripcion}" readonly=true
+						 required="false"></textarea>
+						
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">MONTO FACTURA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.monto}"></label>
+					</div>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

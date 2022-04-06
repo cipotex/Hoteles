@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+<body>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<ul class="list-group">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ID</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.id}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">EMPRESA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.empresa.nombre}"></label>
+					</div>
+
+					<div class="form-group row ">
+						<label class="col-sm-2 col-form-label">CODIGO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.codigo}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">COMENTARIOS</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" colspan="2"
+							th:text="${datos.comentarios}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">COSTO ADQUISICION</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark" 
+							th:text="${datos.costoadquisisicion}"></label>
+					</div>
+					
+					
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ESTADO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.estado}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">HABITACION ASIGNADO</label>
+						<label class="col-sm-6 col-form-label text-white bg-dark">
+							<th:block th:if="${datos.habitacion != null}"
+								th:text="${datos.habitacion.codigo}"></th:block> <th:block
+								th:unless="${datos.habitacion}"></th:block>
+						</label>
+					</div>
+
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+
+	<body>
+		<div class="container py-4">
+			<h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+				th:text="${titulo}"></h1>
+
+			<div class="card bg-light">
+
+				<div class="card-header text-muted">
+					<a class="btn btn-primary" href="#aumentar" data-toggle="modal">Aumentar Saldo</a>
+					<a class="btn btn-danger" href="#disminuye" data-toggle="modal">Disminuir Saldo</a>
+				</div>
+
+				<div class="card-body">
+					<ul class="list-group">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">ID</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark" th:text="${datos.id}"></label>
+
+							<label class="col-sm-2 col-form-label">NOMBRE EMPRESA</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.empresa.nombre}"></label>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">CLIENTE</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.cliente.nombredui}"></label>
+							<label class="col-sm-2 col-form-label">HABITACION</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.habitacion.codigo}"></label>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">FEHCHA INICIAL</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.fechaInicio}"></label>
+							<label class="col-sm-2 col-form-label">FECHA FINAL</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.fechaFin}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">PERIODO RESERVA</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.periodoreserva}"></label>
+							<label class="col-sm-2 col-form-label">DIAS OCUPACION</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.diasOcupacion}"></label>
+
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">PROMOCION </label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.promocionvigente}"></label>
+							<label class="col-sm-2 col-form-label">TOTAL RESERVA CON DESCUENTO </label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.montoReservaConDescuento}"></label>
+
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">RECURRENTE</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.recurrente}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">GANRANTIA</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.montoDeposito}"></label>
+							<label class="col-sm-2 col-form-label">RESERVA</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.factura.ocupacion.reserva.montoPreReserva}"></label>
+						</div>
+						<div>
+							<hr />
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">DESCRIPCION </label> <label
+								class="col-sm-10 col-form-label text-white bg-dark"
+								th:text="${datos.comentarios}"></label>
+
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">CARGOS RECIBO</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark" th:text="${datos.recargo}"></label>
+							<label class="col-sm-2 col-form-label">DESCUENTOS RECIBO</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark" th:text="${datos.descuento}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">TOTAL FACTURACION</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.montofactura}"></label>
+
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">TOTAL RECIBO</label> <label
+								class="col-sm-4 col-form-label text-white bg-dark"
+								th:text="${datos.montoRecibo}"></label>
+						</div>
+					</ul>
+				</div>
+			</div>
+
+			<div class="modal fade" id="aumentar">
+				<form th:action="@{/recibos/aumentasaldo}" method="post">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">AUMENTO DE SALDO<h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+							</div>
+							<input type="hidden" th:value="*{datos.id}" class="form-control" name="recibo"
+								id="recibo" />
+
+							<div class="modal-body">
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">MONTO</label>
+									<div class="col-sm-6">
+										<input type="number" id="sumamonto" name="sumamonto" required=true />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">DESCRIPCION</label>
+									<div class="col-sm-6">
+										<input type="text" id="descripcion" name="descripcion" required=true />
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-primary"
+									onclick=" return confirm('Esta seguro que quiere aumentar monto a cobrar a este recibo?');">Guardar</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="modal fade" id="disminuye">
+				<form th:action="@{/recibos/disminuyesaldo}" method="post">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">DISMINUCION DE SALDO<h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+							</div>
+							<input type="hidden" th:value="*{datos.id}" class="form-control" name="recibo"
+								id="recibo" />
+
+							<div class="modal-body">
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">MONTO</label>
+									<div class="col-sm-6">
+										<input type="number" id="sumamonto" name="sumamonto" required=true />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4 col-form-label">DESCRIPCION</label>
+									<div class="col-sm-6">
+										<input type="text" id="descripcion" name="descripcion" required=true />
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-primary"
+									onclick=" return confirm('Esta seguro que quiere disminuir monto a cobrar a este recibo?');">Guardar</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+	</body>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

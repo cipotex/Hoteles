@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoArrendamiento_1" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fcb3614f-ac03-4339-b4bb-c3086cc854bc">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="24" width="360" height="30" uuid="e206db53-50dc-4fdb-917c-8ba995915f7d"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE ARRAMIENTO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="550" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="570" height="540" uuid="d805e943-9d3f-474c-9943-256e70bc7a50"/>
+				<text><![CDATA[NUMERO________.- En la ciudad de ______, a las _________ horas del día ______ de _______ del año dos mil _____.- Ante mí, ______________, Notario, de este domicilio; COMPARECEN: Los señores ____________________, quien es de ________años de edad, _________, del domicilio de ________; a quien por no conocer, lo identifico por medio de su Documento Único de Identidad número __________________; quien en lo sucesivo se denominará “EL ARRENDANTE”; y ________________, quien es de _________ años de edad, ___________, del domicilio de ____________; a quien hoy conozco, portador de su Documento Único de Identidad número _____________; quien durante el transcurso del presente instrumento se denominará “LA ARRENDATARIA”; y ME DICEN: Que han convenido en formalizar un CONTRATO DE ARRENDAMIENTO, sujeto a las cláusulas siguientes: I) El arrendante es dueño y actual poseedor de un inmueble situado en _________; el cual entrega en arrendamiento la arrendataria y éste lo recibe a su entera satisfacción; además tiene en sus instalaciones, servicios de agua potable, energía eléctrica e internet, cuyas facturas serán canceladas por la arrendataria en las fechas oportunas; la cual se encuentra en perfectas condiciones de funcionamiento y la Arrendataria se compromete a devolverla en el estado en que la recibe, respondiendo por los daños en las instalaciones de dicho apartamento, que provenga del uso indebido, culpa o dolo de la Arrendataria o de sus dependientes o terceros dirigidos al inmueble.- II) La arrendataria destinará el local arrendado exclusivamente para vivienda y no podrá, en consecuencia, destinarlo a un uso distinto al convenido sin previa autorización por escrito del arrendante.- III) El plazo del presente arrendamiento es de DOCE MESES, contados a partir del día _____ de _______del presente año, el cual finalizará el día _____ de ______del año dos mil ________, fecha en la cual, la arrendataria deberá restituir el inmueble arrendado al arrendante así como sus accesorios, en las mismas condiciones de presentación y conservación en que lo ha recibido, salvo aquellos deterioros causados por el tiempo y/o el uso normal del mismo. Vencido el plazo estipulado, el contrato será renovable de manera automática y por el mismo plazo.- IV) El precio del presente arrendamiento es de __________ DOLARES DE LOS ESTADOS UNIDOS DE AMERICA, que la arrendataria pagará por medio de _________ cuotas mensuales, anticipadas y sucesivas de ________ DOLARES Pasaje Sagrado Corazon No. 2–28, entre la 83 y 85 Avenida Norte, Colonia Escalon, San Salvador, El Salvador Central America PBX (503) 2263 – 9696 FAX (503) 2263 – 4554 www.goldservice.com.sv gs@goldservice.com.sv DE LOS ESTADOS UNIDOS DE AMERICA, la cual incluye la cuota de mantenimiento, dichos cánones de arrendamiento deberán ser cancelados los día _________ de cada uno de los meses comprendidos dentro del plazo,. Queda especialmente convenido por ambas partes que la arrendataria entregará la primera cuota del canon mensual, el día en que se haga la entrega material del inmueble arrendado por parte de los arrendantes.- V) La arrendataria paga en este acto la cantidad de ____________ DOLARES DE LOS ESTADOS UNIDOS DE AMERICA, en concepto de Depósito, que servirá para garantizar los daños y perjuicios que pudieren ocasionarse por el mal uso del inmueble y para el pago de los servicios que este haya recibido en el referido inmueble, tales como agua potable, energía eléctrica, teléfono si los hubieren, pendientes de pago al desocupar el inmueble o para cubrir la mora en el pago de un canon mensual; después de que se hayan hecho los referidos pagos o los gastos que ocasionen los daños y perjuicios previa liquidación, treinta días después de desocupado el apartame nto o dado por terminado el contrato, la arrendante devolverá el resto o la totalidad a la arrendataria.- VI) El pago de los servicios de agua, energía eléctrica, y teléfonos, así como las multas correspondientes a los mismos impuestos o las multas de carácter sanitario serán por cuenta exclusiva de la arrendataria y únicamente al consumo que corresponda al inmueble arrendado; las facturas de los servicios antes mencionados, deberán ser entregados debidamente cancelados a la arrendante, mensualmente en la fecha estipulada para el pago de los cánones de arrendamiento.- ]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

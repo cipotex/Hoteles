@@ -1,0 +1,150 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head">
+
+
+</head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container-fluid  py-4">
+
+		<div class="card bg-light">
+
+			<h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+				th:text="${titulo}"></h1>
+
+			<div class="card-body">
+
+				<div class="container">
+					<div class="column	">
+
+						<div class="row">
+
+							<div class="card" style="width: 100%;">
+								<form method="post"  th:action="@{/facturacion/facturar}" th:object="${datos}">
+								<div class="card-header text-muted">
+										<a class="btn btn-secondary" th:text="'Reporte Cargos Adicionales'" th:href="@{/facturacion/cargosadicionesImp/} + ${datos.id}" onclick=" return confirm('Valide que esten ingresados todos los cargos adicionales?');" ></a>										
+										<input type="submit" value="Generar Cobro" class="btn btn-primary" />										
+									</div>
+									<div class="card-body">
+									
+									
+										<ul class="list-group">
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">ID RESERVA</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.id}"></label> <label
+													class="col-sm-2 col-form-label">ID OCUPACION</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.id}"></label>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">CLIENTE</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.cliente.nombredui}"></label> <label
+													class="col-sm-2 col-form-label">HABTACION</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.habitacion.codigo}"></label>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">PERIODO</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.periodoreserva}"></label>
+
+												<label class="col-sm-2 col-form-label">PRECIO</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.precioreserva}"></label>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">RECURRENTE</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.recurrente}"></label>
+
+												<label class="col-sm-2 col-form-label">RENOVAR</label>
+												<select class="form-control col-sm-4 col-form-label text-white bg-dark"
+													id="renovar"
+													name="renovar">
+
+													<option value="S">SI</option>
+													<option value="N">NO</option>
+
+												</select>
+											</div>
+
+											<div>
+												<hr />
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">DIAS OCUPACION</label>
+												<label class="col-sm-2 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.diasOcupacion}"></label>
+
+												<label class="col-sm-2 col-form-label">DEL</label> <label
+													class="col-sm-2 col-form-label text-white bg-dark"
+													th:text=${datos.fechaInicioOcupacion}></label>
+
+												<label class="col-sm-1 col-form-label">AL-</label> <label
+													class="col-sm-2 col-form-label text-white bg-dark"
+													th:text=${datos.fechaFinOcupacion}></label>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">MONTO
+													OCUPACION</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.montoReservaConDescuento}"></label>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">MONTO
+													PRE RESERVA</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text="${datos.reserva.montoPreReserva*-1}"></label>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">CARGOS
+													ADICIONALES</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text=${cargosadicionales}></label>
+											</div>
+
+											<div class="form-group row">
+												<label class="col-sm-2 col-form-label">TOTAL
+													OCUPACION</label> <label
+													class="col-sm-4 col-form-label text-white bg-dark"
+													th:text=${totalocupacion}></label>
+											</div>
+
+										</ul>
+
+									</div>
+									
+								</form >
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+</html>

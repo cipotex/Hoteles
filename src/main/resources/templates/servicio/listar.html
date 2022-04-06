@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head th:replace="layout/layout :: head"> </head>
+<body>
+	
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container-fluid  py-4" >
+		<div class="card bg-light">
+			
+			<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+			
+			<div class="card-body" >
+
+				<h4 class= "card-title">
+				 <a th:href="@{/servicio/form}" class= "btn btn-primary btn-xs" >Crear Servicio</a>
+				 <a class="btn btn-success btn-xs float-right" th:href="@{'/servicio/export/excel'}">XLS</a>
+				</h4>
+			<div class="table-responsive">	
+				<table class="table table-striped ">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>EMPRESA</th>
+							<th>SERVICIO</th>
+							<th>DESCRIPCION</th>
+							<th>PRECIO</th>
+							 <th>CLASE SERVICIO</th> 
+							<th>ESTADO</th>															
+							<th>EDITAR</th>
+					        <th>ELIMINAR</th>
+						</tr>
+					</thead>
+					<tbody>
+					 	<tr th:each="data: ${servicio}">							
+							<td> <a class="btn btn-primary btn-xs bg" th:href="@{/servicio/ver/} + ${data.id}" th:text="${data.id}"> </a>   </td>
+							<td  th:text="${data.getEmpresa.getNombre()}"></td>
+							<td  th:text="${data.getNombre()}"></td>
+							<td  th:text="${data.getDescripcion()}"></td>
+							<td  th:text="${data.getPrecioUnitario()}"></td>
+							<td  th:text="${data.claseServicio.nombre}"></td>
+							<!-- <td>
+						 	   <th:block th:if="${data.promocion != null}" th:text="${data.promocion.descripcion}"></th:block>
+                               <th:block th:unless="${data.promocion}"></th:block>
+						 	</td> -->
+							<td  th:text="${data.estado}"></td>													
+							<td><a class="btn btn-primary btn-xs" th:href="@{/servicio/form/} + ${data.id}" th:text="'EDITAR'" ></a></td>
+					        <td><a class="btn btn-danger btn-xs" th:href="@{/servicio/eliminar/} + ${data.id}" th:text="'ELIMINAR'"					      
+					        onclick="     return confirm('Estas seguro que quieres eliminar?');"  ></a></td> 
+					   
+						</tr>
+					</tbody>
+				</table>
+			</div>		
+			     <nav th:replace="layout/paginator-nav :: paginator"></nav>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+</html>

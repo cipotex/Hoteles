@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+<body>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<ul class="list-group">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ID</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.id}"></label>
+					</div>
+ 
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">CODIGO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.codigo}"></label>
+					</div>
+
+					<div class="form-group row ">
+						<label class="col-sm-2 col-form-label">ESTADO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.estado}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">EMPRESA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.empresa.nombre}"></label>
+					</div>
+
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">TIPO HABITACION</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.tipohabitacion.descripcion}"></label>
+					</div>
+<!--
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO SEMANA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.preciosemana}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO MES</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.preciomes}"></label>
+					</div>
+ -->
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

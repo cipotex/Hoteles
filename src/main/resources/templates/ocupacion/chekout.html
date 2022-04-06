@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head th:replace="layout/layout :: head">
+
+
+</head>
+<body>
+	
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container-fluid  py-4" >
+  
+		<div class="card bg-light">
+			
+			<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+			
+			<div class="card-body" >
+
+				<h4 class= "card-title">				
+				   <a class="btn btn-success btn-xs float-right" th:href="@{'/ocupaciones/export/excel'}">XLS</a>
+				</h4>
+				
+				
+				
+			</div>
+
+		</div>
+	
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+</html>

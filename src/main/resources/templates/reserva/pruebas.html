@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head th:replace="layout/layout :: head">
+
+</head>
+
+<body>
+
+<header th:replace="layout/layout :: header"> </header>
+
+
+<button id="bt1">Load Fragment 1</button>
+<button id="bt2">Load Fragment 2</button>
+
+<div id="content"></div>
+
+<script>
+    /*<![CDATA[*/
+    $("#bt1").on("click", function () {
+    	alert("Salida1");
+    });
+
+    $("#bt2").on("click", function () {
+    	alert("Salida2");
+    });
+    /*]]>*/
+</script>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

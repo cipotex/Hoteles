@@ -1,0 +1,198 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+</head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+
+			<h1 th:text="${titulo}"
+				class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+			<div th:object="${datos}" th:remove="tag">
+				<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+					<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+				</ul>
+			</div>
+			<form th:action="@{/tiposhabitacion/form}" th:object="${datos}" method="post">
+				<div class="card-header">
+					<input type="submit" value="Crear TipoHabitacion" class="btn btn-primary" />
+				</div>
+
+				<div class="card-body">
+
+
+
+					<div class="form-group row" hidden="true">
+						<label class="col-sm-2 col-form-label">Id</label>
+						<div th:if="${#fields.hasErrors('*')}">errors</div>
+						<div class="col-sm-10">
+							<input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"
+								th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('id')}"
+								th:errors="*{id}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">EMPRESA</label>
+						<div class="col-sm-10">
+							<select th:field="*{empresa}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option th:each="Item : ${empresatipos}" th:value="${Item.id}" th:text="${Item.nombre}"
+									th:selected="false" />
+
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DESCRIPCION</label>
+						<div class="col-sm-10">
+							<input type="text" th:field="*{descripcion}" class="form-control"
+								placeholder="Descripción Tipo Habitación" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PROMOCION</label>
+						<div class="col-sm-10">
+							<select th:field="*{promocion}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option value="">-</option>
+								<option th:each="Item : ${promocionestipos}" th:value="${Item.id}"
+									th:text="${Item.descripcion}" th:selected="false" />
+
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO POR DIA</label>
+						<div class="col-sm-10">
+
+							<input type="number" th:field="*{preciodia}" class="form-control" step="any"
+								placeholder="Fecha Fin de promoción" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('preciodia')}"
+								th:errors="*{preciodia}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO POR SEMANA</label>
+						<div class="col-sm-10">
+
+							<input type="number" th:field="*{preciosemana}" class="form-control" step="any"
+								placeholder="Fecha Fin de promoción" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('preciosemana')}"
+								th:errors="*{preciosemana}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO POR MES</label>
+						<div class="col-sm-10">
+
+							<input type="number" th:field="*{preciomes}" class="form-control" step="any"
+								placeholder="Fecha Fin de promoción" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('preciomes')}"
+								th:errors="*{preciomes}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ANTICIPO CLIENTES</label>
+						<div class="col-sm-4">
+							<input type="text" th:field="*{ctaanticipoclientes}" class="form-control" step="any"
+								placeholder="Cuenta Contable Anticipo Clientes"
+								th:errorclass="'form-control alert-danger'" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('ctaanticipoclientes')}"
+								th:errors="*{ctaanticipoclientes}"></small>
+						</div>
+
+						<label class="col-sm-2 col-form-label">GARANTIA CLIENTES</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{ctagarantiaclientes}" class="form-control" step="any"
+								placeholder="Cuenta Contable Garantia Clientes"
+								th:errorclass="'form-control alert-danger'" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('ctagarantiaclientes')}"
+								th:errors="*{ctagarantiaclientes}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">CAJA</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{caja}" class="form-control" step="any"
+								placeholder="Cuenta Contable Caja" th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger" th:if="${#fields.hasErrors('caja')}"
+								th:errors="*{caja}"></small>
+						</div>
+						<label class="col-sm-2 col-form-label">CUENTAS X COBRAR</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{cuentasporcobrar}" class="form-control" step="any"
+								placeholder="Cuenta Contable Cuentas por Cobrar"
+								th:errorclass="'form-control alert-danger'" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('cuentasporcobrar')}"
+								th:errors="*{cuentasporcobrar}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">VENTAS</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{ventas}" class="form-control" step="any"
+								placeholder="Cuenta Contable Ventas" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('ventas')}"
+								th:errors="*{ventas}"></small>
+						</div>
+						<label class="col-sm-2 col-form-label">IVA DEBITO</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{ivadebito}" class="form-control" step="any"
+								placeholder="Cuenta Contable iva Debito Fiscal"
+								th:errorclass="'form-control alert-danger'" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('ivadebito')}" th:errors="*{ivadebito}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">OTROS INGRESOS</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{otrosIngresos}" class="form-control" step="any"
+								placeholder="Otros ingresos por ventas" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('otrosIngresos')}"
+								th:errors="*{otrosIngresos}"></small>
+						</div>
+						
+						<label class="col-sm-2 col-form-label">ANULACION RECIBOS</label>
+						<div class="col-sm-4">
+
+							<input type="text" th:field="*{anulacionRecibos}" class="form-control" step="any"
+								placeholder="Cuenta de perdidas por anulacion de recibos" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('anulacionRecibos')}"
+								th:errors="*{anulacionRecibos}"></small>
+						</div>
+						
+					</div>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+
+</html>

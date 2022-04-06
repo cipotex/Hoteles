@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+    
+	<header th:replace="layout/layout :: header"> </header>
+	<div class="container py-2">
+
+       <!-- 
+		<h1 th:text="${mensaje}"
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"> xxx</h1>
+         -->
+         
+		<div class="card-body">
+			<div class="card-title">
+				<h1>Administración y control de Reservas Hoteles</h1>
+			</div>
+			<div class="card-text">Aplicación para manejo de reservas de
+				Multiples hoteles y control de cobros y ocupación de habitaciones.</div>
+
+			<ul sec:authorize ="isAuthenticated()" >
+				<!-- <span th:text="zzzzz" class="bg-white"></span> -->
+				
+
+			</ul>
+
+		</div>
+
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

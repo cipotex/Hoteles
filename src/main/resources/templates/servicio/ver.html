@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+<body>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<ul class="list-group">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ID</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.id}"></label>
+					</div>
+
+					<div class="form-group row ">
+						<label class="col-sm-2 col-form-label">NOMBRE EMPRESA</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.empresa.nombre}"></label>
+					</div>
+
+					<div class="form-group row ">
+						<label class="col-sm-2 col-form-label">CLASE SERVICIO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.claseServicio.nombre}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">NOMBRE SERVICIO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.nombre}"></label>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DESCRIPCION
+							SERVICIO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.descripcion}"></label>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO
+							SERVICIO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.precioUnitario}"></label>
+					</div>
+
+					<!--	<div class="form-group row">
+						<label class="col-sm-2 col-form-label">PRECIO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.precioUnitario}"></label>
+					</div>
+				 
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">DESCUENTO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${datos.promocion}"></label>
+					</div>
+    				-->
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">ESTADO</label> <label
+							class="col-sm-6 col-form-label text-white bg-dark"
+							th:text="${servicio.estado}"></label>
+					</div>
+
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

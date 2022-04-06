@@ -1,0 +1,250 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <script type="text/javascript" th:fragment = "cargos-javvascript">
+  $(document).ready(function() {
+
+		$("#buscar_producto").autocomplete({
+
+			source : function(request, response) {
+				$.ajax({
+					url : "/cargosadicionales/cargar_servicios/" + request.term,
+					dataType : "json",
+					data : {
+						term : request.term
+					},
+					success : function(data) {
+						response($.map(data, function(item) {
+							return {
+								value  : item.id,
+								label  : item.nombre,
+								precio : item.precioUnitario,								
+								clase  : item.claseServicio.nombre,
+								claseid: item.claseServicio.id,
+								promoid: $("#promocion").val(),
+								descuentoporc: $("#descuento").val()
+							};
+						}));
+					},
+				});
+			},
+			select : function(event, ui) {
+			//	$("#buscar_producto").val(ui.item.label);
+				
+			if(itemsHelper.hasProducto(ui.item.value, ui.item.promoid)){
+					itemsHelper.incrementaCantidad(ui.item.value, ui.item.precio, ui.item.descuentoporc);
+					return false;
+				}
+				
+				var linea = $("#plantillaItemsCargosAdicionales").html();
+				//alert(ui.item.promoid);
+				linea = linea.replace(/{ID}/g, ui.item.value);
+				linea = linea.replace(/{NOMBRE}/g, ui.item.label);
+				linea = linea.replace(/{PRECIO}/g, ui.item.precio);
+				linea = linea.replace(/{CLASE}/g, ui.item.clase);
+				linea = linea.replace(/{PROMOCION}/g, ui.item.promoid);
+				linea = linea.replace(/{promocionID}/g, ui.item.promoid);
+				linea = linea.replace(/{DESCUENTO}/g, ui.item.descuentoporc);
+				linea = linea.replace(/{claseID}/g, ui.item.claseid);
+
+				$("#cargarItemProductos tbody").append(linea);
+				itemsHelper.calcularImporte(ui.item.value, ui.item.precio, ui.item.descuentoporc, 1);
+
+				return false;
+			}
+		});
+
+		$("form").submit(function(){
+			$("#plantillaItemsCargosAdicionales").remove();
+			return;
+		});
+
+	});
+	
+	var itemsHelper = {
+			calcularImporte: function(id, precio, descuento, cantidad){
+				//
+				//var descuento = $("#descuento").val()
+				//alert (" descuento = "+ parseInt(descuento));
+				//
+				$("#total_importe_" + id).html(  parseFloat(precio) * parseInt(cantidad) -(parseInt(descuento)/100*(parseFloat(precio) * parseInt(cantidad)))  );
+				this.calcularGranTotal();
+			},
+			
+			hasProducto: function(id, promoid ){
+				
+				var resultado = false;
+				$( 'input[name="item_id[]"]' ).each(function(){					
+					if(parseInt(id) == parseInt($(this).val()) ){
+						
+						var promo = $("#promo_" + id).val() ? parseInt($("#promo_" + id).val()) : 0;
+						//alert ( "ID= "+id +" -- "+  $("#promo_" + id).val() + " PROMO SELECCCIONADA "+$("#promocion").val())
+						if (promo == $("#promocion").val()){
+							resultado = true;
+						} else {
+							    alert("No se pueden mezclar los mismos codigos de Items con promocion y sin Promocion");
+							    cancel;
+						         }
+						//resultado = true;
+					}
+				});
+				
+				return resultado;
+			},
+			incrementaCantidad: function(id, precio, descuento){
+				var cantidad = $("#cantidad_" + id).val() ? parseInt($("#cantidad_" + id).val()) : 0;
+				$("#cantidad_" + id).val(++cantidad);
+				this.calcularImporte(id, precio, descuento, cantidad);
+			},
+			eliminarLineaFactura: function(id){
+				$("#row_" + id).remove();
+				this.calcularGranTotal();
+			},
+			calcularGranTotal: function(){
+				var total = 0;
+				
+				$('span[id^="total_importe_"]').each(function(){
+					//total += parseInt($(this).html());
+					total += parseFloat($(this).html());
+				});
+				
+				$('#gran_total').html(total);
+			}
+	}
+	
+	
+  </script>
+</body>
+</html>
+
+
+
+
+
+=======
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <script type="text/javascript" th:fragment = "cargos-javvascript">
+  $(document).ready(function() {
+
+		$("#buscar_producto").autocomplete({
+
+			source : function(request, response) {
+				$.ajax({
+					url : "/cargosadicionales/cargar_servicios/" + request.term,
+					dataType : "json",
+					data : {
+						term : request.term
+					},
+					success : function(data) {
+						response($.map(data, function(item) {
+							return {
+								value  : item.id,
+								label  : item.nombre,
+								precio : item.precioUnitario,								
+								clase  : item.claseServicio.nombre,
+								claseid: item.claseServicio.id,
+								promoid: $("#promocion").val(),
+								descuentoporc: $("#descuento").val()
+							};
+						}));
+					},
+				});
+			},
+			select : function(event, ui) {
+			//	$("#buscar_producto").val(ui.item.label);
+				
+			if(itemsHelper.hasProducto(ui.item.value, ui.item.promoid)){
+					itemsHelper.incrementaCantidad(ui.item.value, ui.item.precio, ui.item.descuentoporc);
+					return false;
+				}
+				
+				var linea = $("#plantillaItemsCargosAdicionales").html();
+				//alert(ui.item.promoid);
+				linea = linea.replace(/{ID}/g, ui.item.value);
+				linea = linea.replace(/{NOMBRE}/g, ui.item.label);
+				linea = linea.replace(/{PRECIO}/g, ui.item.precio);
+				linea = linea.replace(/{CLASE}/g, ui.item.clase);
+				linea = linea.replace(/{PROMOCION}/g, ui.item.promoid);
+				linea = linea.replace(/{promocionID}/g, ui.item.promoid);
+				linea = linea.replace(/{DESCUENTO}/g, ui.item.descuentoporc);
+				linea = linea.replace(/{claseID}/g, ui.item.claseid);
+
+				$("#cargarItemProductos tbody").append(linea);
+				itemsHelper.calcularImporte(ui.item.value, ui.item.precio, ui.item.descuentoporc, 1);
+
+				return false;
+			}
+		});
+
+		$("form").submit(function(){
+			$("#plantillaItemsCargosAdicionales").remove();
+			return;
+		});
+
+	});
+	
+	var itemsHelper = {
+			calcularImporte: function(id, precio, descuento, cantidad){
+				//
+				//var descuento = $("#descuento").val()
+				//alert (" descuento = "+ parseInt(descuento));
+				//
+				$("#total_importe_" + id).html(  parseFloat(precio) * parseInt(cantidad) -(parseInt(descuento)/100*(parseFloat(precio) * parseInt(cantidad)))  );
+				this.calcularGranTotal();
+			},
+			
+			hasProducto: function(id, promoid ){
+				
+				var resultado = false;
+				$( 'input[name="item_id[]"]' ).each(function(){					
+					if(parseInt(id) == parseInt($(this).val()) ){
+						
+						var promo = $("#promo_" + id).val() ? parseInt($("#promo_" + id).val()) : 0;
+						//alert ( "ID= "+id +" -- "+  $("#promo_" + id).val() + " PROMO SELECCCIONADA "+$("#promocion").val())
+						if (promo == $("#promocion").val()){
+							resultado = true;
+						} else {
+							    alert("No se pueden mezclar los mismos codigos de Items con promocion y sin Promocion");
+							    cancel;
+						         }
+						//resultado = true;
+					}
+				});
+				
+				return resultado;
+			},
+			incrementaCantidad: function(id, precio, descuento){
+				var cantidad = $("#cantidad_" + id).val() ? parseInt($("#cantidad_" + id).val()) : 0;
+				$("#cantidad_" + id).val(++cantidad);
+				this.calcularImporte(id, precio, descuento, cantidad);
+			},
+			eliminarLineaFactura: function(id){
+				$("#row_" + id).remove();
+				this.calcularGranTotal();
+			},
+			calcularGranTotal: function(){
+				var total = 0;
+				
+				$('span[id^="total_importe_"]').each(function(){
+					//total += parseInt($(this).html());
+					total += parseFloat($(this).html());
+				});
+				
+				$('#gran_total').html(total);
+			}
+	}
+	
+	
+  </script>
+</body>
+</html>
+
+
+
+
+
+>>>>>>> 309919135db73bc5c71cb2048104eb63fa5f50cd
+	

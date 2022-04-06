@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+
+<body>
+	<header th:replace="layout/layout :: header"> </header>
+
+	<body>
+		<div class="container py-4">
+			<div class="card bg-light">
+				<div class="card-header" th:text="${titulo}"></div>
+				<div class="card-body">
+
+					<ul class="list-group">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">ID</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.id}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">EMPRESA</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.empresa.nombre}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">RESERVA_ID</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.ocupacion.reserva.id}"></label>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">CLIENTE</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.ocupacion.reserva.cliente.nombredui}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">HABITACION</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.ocupacion.reserva.habitacion.codigo}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">FECHA SERVICIO</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.fecha_ins}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">ESTADO DEL SERVICIO</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.estado}"></label>
+						</div>
+
+
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">SERVICIO</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.servicio.nombre}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">CANTIDAD</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.cantidad}"></label>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">PRECIO UNITARIO</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.servicio.precioUnitario}"></label>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">DESCUENTO</label>
+							<label class="col-sm-6 col-form-label text-white bg-dark">
+								<th:block th:if="${cargosadicionales.promocion != null}"
+									th:text="${cargosadicionales.promocion.porcdescuento}"></th:block>
+								<th:block th:unless="${cargosadicionales.promocion}"></th:block>
+							</label>
+
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">TOTAL SERVICIO</label> <label
+								class="col-sm-6 col-form-label text-white bg-dark"
+								th:text="${cargosadicionales.total}"></label>
+						</div>
+
+					</ul>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</html>

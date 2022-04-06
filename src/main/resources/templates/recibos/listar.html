@@ -1,0 +1,97 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head">
+
+
+</head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"> </header>
+
+	<div class="container-fluid  py-4">
+
+		<div class="card bg-light">
+
+			<h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+				th:text="${titulo}"></h1>
+
+			<div class="card-body">
+
+
+				<div class="table-responsive">
+
+					<table class="table table-striped ">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>EMPRESA</th>
+								<th>CLIENTE</th>
+								<th>INICIO OCUPACION</th>
+								<th>FIN OCUPACION</th>
+								<th>FECHA FACTURA</th>
+								<th>TOTAL FACTURA</th>
+								<th>CARGOS</th>
+								<th>DESCUENTOS</th>
+								<th>TOTAL RECIBO</th>
+								<th>RECIBO</th>
+								<th>PAGAR</th>
+								<th>ANULAR</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="dato: ${datos}">
+								<td> <a class="btn btn-primary btn-xs bg" th:href="@{/recibos/ver/} + ${dato.id}"
+										th:text="${dato.id}"> </a>
+								</td>
+								<td th:text="${dato.empresa.nombre}"></td>
+								<td th:text="${dato.cliente.nombredui}"></td>
+								<td th:text="${dato.factura.ocupacion.fechaInicioOcupacion}"></td>
+								<td th:text="${dato.factura.ocupacion.fechaFinOcupacion}"></td>
+								<td th:text="${dato.fecha_ins}"></td>
+								<td th:text="${dato.montofactura}"></td>
+								<td th:text="${dato.recargo}"></td>
+								<td th:text="${dato.descuento}"></td>
+								<td th:text="${dato.montoRecibo}"></td>
+
+								<td><a class="btn btn-secondary btn-xs" th:href="@{/recibos/imprimerecibo/} + ${dato.id}"
+										th:text="'IMPRIMIR'"></a>
+								</td>
+
+								<td><a class="btn btn-primary btn-xs" th:href="@{/recibos/pago/} + ${dato.id}"
+										th:text="'PAGAR'"
+										onclick="     return confirm('Esta seguro que quiere registrar este cobro como finalizado?');"></a>
+								</td>
+
+								<td><a class="btn btn-danger btn-xs" th:href="@{/recibos/anular/} + ${dato.id}"
+										th:text="'ANULAR'"
+										onclick="     return confirm('Esta seguro que quiere <<ANULAR>> este recibo?');"></a>
+								</td>
+							</tr>
+
+
+						</tbody>
+				</div>
+				</table>
+				<nav th:replace="layout/paginator-nav :: paginator"></nav>
+
+
+
+
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+	</div>
+
+</body>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+</html>
